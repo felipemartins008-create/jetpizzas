@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Painel de Resultados — Jet Pizzas Jundiaí</title>
+  <link rel="icon" type="image/jpeg" href="assets/app-iphone.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="painel.css" />
+  <script src="tracking-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+  <script src="painel.js" defer></script>
+</head>
+<body>
+  <!-- Tela de Acesso -->
+  <section id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="assets/app-iphone.jpg" alt="Jet Pizzas" />
+      </div>
+      <h1>#PedeJet</h1>
+      <p class="login-sub">Painel de Resultados · Unidade Jundiaí</p>
+
+      <form id="login-form" class="login-form">
+        <label for="password-input">Senha de acesso</label>
+        <input
+          id="password-input"
+          type="password"
+          placeholder="Digite a senha do painel"
+          autocomplete="current-password"
+          required
+        />
+        <p id="login-error" class="login-error" hidden>Senha incorreta. Tente novamente.</p>
+        <button type="submit" id="login-btn" class="btn-primary">Entrar no Painel</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Painel Principal -->
+  <div id="dashboard-app" class="app" hidden>
+    <header class="topbar">
+      <div class="topbar-brand">
+        <img src="assets/app-iphone.jpg" alt="Jet Pizzas" />
+        <div>
+          <span class="brand-name">#PedeJet Resultados</span>
+          <span class="brand-tag">Unidade Jundiaí · Acompanhamento de Anúncios</span>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <span id="last-updated" class="last-updated">Atualizado agora</span>
+        <button type="button" id="refresh-btn" class="btn-ghost">Atualizar</button>
+        <button type="button" id="export-csv-btn" class="btn-ghost">Baixar Planilha</button>
+        <button type="button" id="logout-btn" class="btn-ghost btn-ghost--danger">Sair</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Barra de Filtros Global -->
+      <section class="filters-card" aria-label="Filtros de período e página">
+        <div class="filters-row">
+          <div class="period-pills" role="group" aria-label="Período">
+            <button type="button" class="pill is-active" data-period="all">Todas as datas</button>
+            <button type="button" class="pill" data-period="today">Hoje</button>
+            <button type="button" class="pill" data-period="yesterday">Ontem</button>
+            <button type="button" class="pill" data-period="7d">Últimos 7 dias</button>
+            <button type="button" class="pill" data-period="30d">Últimos 30 dias</button>
+          </div>
+
+          <div class="date-range-group">
+            <label class="date-field">
+              <span>De</span>
+              <input type="date" id="date-start" aria-label="Data inicial" />
+            </label>
+            <label class="date-field">
+              <span>Até</span>
+              <input type="date" id="date-end" aria-label="Data final" />
+            </label>
+            <button type="button" id="apply-dates-btn" class="btn-apply-date">Filtrar</button>
+          </div>
+        </div>
+
+        <div class="filters-row filters-row--secondary">
+          <div class="select-group">
+            <select id="filter-campaign" aria-label="Filtrar por Campanha">
+              <option value="">Todas as campanhas</option>
+            </select>
+
+            <select id="filter-adset" aria-label="Filtrar por Conjunto">
+              <option value="">Todos os conjuntos</option>
+            </select>
+
+            <select id="filter-ad" aria-label="Filtrar por Anúncio">
+              <option value="">Todos os anúncios</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================= -->
+      <!-- ABA 1: VISÃO GERAL                                        -->
+      <!-- ========================================================= -->
+      <section id="view-geral" class="view-section">
+        <div class="kpi-grid" aria-label="Resumo geral">
+          <article class="kpi-card">
+            <span class="kpi-label">Pessoas que Acessaram</span>
+            <strong class="kpi-value" id="kpi-visitors">0</strong>
+            <span class="kpi-sub" id="kpi-pageviews">0 visualizações na página</span>
+          </article>
+
+          <article class="kpi-card">
+            <span class="kpi-label">Total de Cliques nos Botões</span>
+            <strong class="kpi-value" id="kpi-clicks">0</strong>
+            <span class="kpi-sub" id="kpi-ctr">0% de taxa de clique</span>
+          </article>
+
+          <article class="kpi-card kpi-card--highlight">
+            <span class="kpi-label">Cliques no WhatsApp</span>
+            <strong class="kpi-value" id="kpi-whatsapp">0</strong>
+            <span class="kpi-sub" id="kpi-whatsapp-pct">0% das visualizações</span>
+          </article>
+
+          <article class="kpi-card">
+            <span class="kpi-label">Cliques no Cardápio (Site)</span>
+            <strong class="kpi-value" id="kpi-cardapio">0</strong>
+            <span class="kpi-sub" id="kpi-cardapio-pct">0% das visualizações</span>
+          </article>
+
+          <article class="kpi-card">
+            <span class="kpi-label">Cliques nos Aplicativos</span>
+            <strong class="kpi-value" id="kpi-apps">0</strong>
+            <span class="kpi-sub" id="kpi-apps-split">0 iPhone · 0 Android</span>
+          </article>
+
+          <article class="kpi-card">
+            <span class="kpi-label">Telefone &amp; Redes Sociais</span>
+            <strong class="kpi-value" id="kpi-phone">0</strong>
+            <span class="kpi-sub" id="kpi-social-split">0 Instagram · 0 Compartilhamentos</span>
+          </article>
+        </div>
+
+        <div class="charts-grid">
+          <div class="panel-card">
+            <div class="panel-header">
+              <h2>Resumo por Dia</h2>
+              <span class="panel-hint">Visualizações na página, cliques no WhatsApp e no Cardápio</span>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="daily-chart"></canvas>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-header">
+              <h2>Dispositivo &amp; Atenção</h2>
+              <span class="panel-hint">Por onde as pessoas acessam e quanto tempo ficam</span>
+            </div>
+
+            <div class="mini-section">
+              <h3>Por onde as pessoas acessam</h3>
+              <div id="device-breakdown" class="breakdown-list"></div>
+            </div>
+
+            <div class="mini-section">
+              <h3>Tempo de atenção na página</h3>
+              <div class="engagement-row">
+                <div class="engagement-box">
+                  <span class="eng-label">Ficaram 10s ou mais</span>
+                  <strong id="kpi-eng10">0</strong>
+                </div>
+                <div class="engagement-box">
+                  <span class="eng-label">Ficaram 30s ou mais</span>
+                  <strong id="kpi-eng30">0</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================= -->
+      <!-- ABA 2: POR CAMPANHA, CONJUNTO E ANÚNCIO                   -->
+      <!-- ========================================================= -->
+      <section id="view-anuncios" class="view-section">
+        <div class="panel-card">
+          <div class="panel-header panel-header--row">
+            <div>
+              <h2>Desempenho dos Anúncios</h2>
+              <span class="panel-hint">Escolha abaixo como deseja agrupar os resultados</span>
+            </div>
+
+            <input
+              type="search"
+              id="utm-search"
+              class="search-input"
+              placeholder="Buscar campanha, conjunto ou anúncio..."
+            />
+          </div>
+
+          <div class="sub-tabs" role="group" aria-label="Agrupar por">
+            <button type="button" class="sub-tab is-active" data-group="campaign">Por Campanha</button>
+            <button type="button" class="sub-tab" data-group="adset">Por Conjunto</button>
+            <button type="button" class="sub-tab" data-group="ad">Por Anúncio</button>
+            <button type="button" class="sub-tab" data-group="full">Visão Completa</button>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead id="utm-thead"></thead>
+              <tbody id="utm-tbody">
+                <tr><td colspan="9" class="empty-cell">Carregando dados...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================= -->
+      <!-- ABA 3: POR DATA + AO VIVO                                 -->
+      <!-- ========================================================= -->
+      <section id="view-datas" class="view-section">
+        <div class="panel-card">
+          <div class="panel-header">
+            <h2>Resultados Dia a Dia</h2>
+            <span class="panel-hint">Acompanhe a evolução de acessos e cliques em cada data</span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th class="num">Pessoas</th>
+                  <th class="num">Visualizações na Página</th>
+                  <th class="num">Cliques WhatsApp</th>
+                  <th class="num">Cliques Cardápio</th>
+                  <th class="num">Total de Cliques</th>
+                  <th class="num">Taxa de Clique</th>
+                </tr>
+              </thead>
+              <tbody id="days-tbody">
+                <tr><td colspan="7" class="empty-cell">Carregando datas...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="panel-header">
+            <h2>Atividades Recentes (Ao Vivo)</h2>
+            <span class="panel-hint">Últimas 50 ações registradas no período selecionado</span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table data-table--compact">
+              <thead>
+                <tr>
+                  <th>Data e Hora</th>
+                  <th>Ação</th>
+                  <th>Dispositivo</th>
+                  <th>Campanha</th>
+                  <th>Anúncio</th>
+                  <th>Origem</th>
+                </tr>
+              </thead>
+              <tbody id="recent-tbody">
+                <tr><td colspan="6" class="empty-cell">Nenhuma atividade registrada ainda.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
