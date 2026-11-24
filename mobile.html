@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prévia Mobile — Jet Pizzas Jundiaí</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1f1f26 0%, #0d0d11 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #fff;
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.78);
+    }
+    .toolbar a {
+      color: #FFF700;
+      text-decoration: none;
+      border: 1px solid rgba(255, 247, 0, 0.4);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: background 0.15s ease;
+    }
+    .toolbar a:hover {
+      background: rgba(255, 247, 0, 0.14);
+    }
+    .phone-frame {
+      width: 390px;
+      height: 844px;
+      max-height: calc(100vh - 80px);
+      border-radius: 44px;
+      padding: 10px;
+      background: #141418;
+      border: 2px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 247, 0, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .phone-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 34px;
+      display: block;
+      background: #0A0A0C;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <span>Prévia Mobile ao vivo (390×844)</span>
+    <a href="v2.html">Abrir tela cheia</a>
+    <a href="index.html">Ver Versão 1</a>
+  </div>
+  <div class="phone-frame">
+    <iframe src="v2.html" title="Prévia Mobile Jet Pizzas Jundiaí"></iframe>
+  </div>
+</body>
+</html>
