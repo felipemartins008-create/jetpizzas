@@ -280,6 +280,73 @@ body {
   font-weight: 600;
 }
 
+/* Meta Ads UTM Banner */
+.utm-banner {
+  background: var(--surface);
+  border: 1px solid rgba(255, 247, 0, 0.32);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.utm-banner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.utm-banner-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--yellow);
+}
+
+.utm-banner-code {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 8px 11px;
+  overflow-x: auto;
+  white-space: nowrap;
+  user-select: all;
+}
+
+.btn-copy-utm {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: var(--yellow);
+  color: #000000;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s ease, transform 0.12s ease, background-color 0.15s ease;
+}
+
+.btn-copy-utm:hover {
+  opacity: 0.92;
+}
+
+.btn-copy-utm:active {
+  transform: scale(0.98);
+}
+
+.btn-copy-utm.is-copied {
+  background: var(--green);
+  color: #000000;
+}
+
 /* Filters Card */
 .filters-card {
   background: var(--surface);

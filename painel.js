@@ -45,6 +45,8 @@
   const exportCsvBtn = document.getElementById('export-csv-btn');
   const logoutBtn = document.getElementById('logout-btn');
   const lastUpdatedEl = document.getElementById('last-updated');
+  const copyUtmBtn = document.getElementById('copy-utm-btn');
+  const metaUtmCode = document.getElementById('meta-utm-code');
 
   const filterCampaign = document.getElementById('filter-campaign');
   const filterAdset = document.getElementById('filter-adset');
@@ -681,6 +683,29 @@
 
   refreshBtn.addEventListener('click', () => loadDashboard());
   exportCsvBtn.addEventListener('click', () => exportCsv());
+
+  if (copyUtmBtn && metaUtmCode) {
+    copyUtmBtn.addEventListener('click', async () => {
+      const text = metaUtmCode.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(metaUtmCode);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        document.execCommand('copy');
+        sel.removeAllRanges();
+      }
+      copyUtmBtn.textContent = 'Copiado!';
+      copyUtmBtn.classList.add('is-copied');
+      setTimeout(() => {
+        copyUtmBtn.textContent = 'Copiar parâmetro';
+        copyUtmBtn.classList.remove('is-copied');
+      }, 2000);
+    });
+  }
 
   logoutBtn.addEventListener('click', () => {
     sessionStorage.removeItem(AUTH_KEY);
