@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>#PedeJet | Jet Pizzas Jundiaí — Versão Vídeo</title>
+  <title>#PedeJet | Jet Pizzas Jundiaí</title>
   <meta name="description" content="A PIZZA DE OUTRO MUNDO! Peça sua Jet Pizza em Jundiaí pelo WhatsApp, Site ou App." />
   <meta name="theme-color" content="#0A0A0C" />
 
@@ -14,12 +14,14 @@
   <meta property="og:image" content="assets/pizzas-poster.jpg" />
 
   <link rel="icon" type="image/jpeg" href="assets/app-iphone.jpg" />
+  <link rel="preload" as="image" href="assets/pizzas-mobile-poster.webp" media="(max-width: 767px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/pizzas-poster.webp" media="(min-width: 768px)" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="v2.css" />
-  <script src="tracking-config.js"></script>
-  <script src="tracking.js"></script>
+  <script src="tracking-config.js" defer></script>
+  <script src="tracking.js" defer></script>
 </head>
 <body>
   <!-- Full-Bleed Background Video (Mobile vs Desktop) -->
@@ -31,11 +33,11 @@
       loop
       muted
       playsinline
-      preload="auto"
+      preload="metadata"
       data-src-mobile="assets/pizzas-mobile.mp4"
-      data-poster-mobile="assets/pizzas-mobile-poster.jpg"
+      data-poster-mobile="assets/pizzas-mobile-poster.webp"
       data-src-desktop="assets/pizzas.mp4"
-      data-poster-desktop="assets/pizzas-poster.jpg"
+      data-poster-desktop="assets/pizzas-poster.webp"
     ></video>
     <div class="video-scrim"></div>
   </div>
@@ -89,7 +91,7 @@
         </p>
 
         <div class="brand-avatar">
-          <img src="assets/app-iphone.jpg" alt="Logo Jet Pizzas" />
+          <img src="assets/app-iphone.jpg" alt="Logo Jet Pizzas" width="68" height="68" decoding="async" />
         </div>
 
         <h1 class="brand-title">#PedeJet</h1>
@@ -360,6 +362,6 @@
   <!-- Toast feedback -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
