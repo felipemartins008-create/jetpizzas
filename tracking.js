@@ -66,8 +66,8 @@
 
   function getPageVersion() {
     const path = (window.location.pathname || '').toLowerCase();
-    if (path.includes('v2')) return 'v2_video';
-    return 'v1_linktree';
+    if (path.includes('v1')) return 'v1_linktree';
+    return 'v2_video';
   }
 
   function getDeviceType() {

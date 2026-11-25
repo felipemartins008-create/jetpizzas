@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>#PedeJet | Jet Pizzas Jundiaí</title>
+  <meta name="description" content="A PIZZA DE OUTRO MUNDO! Peça sua Jet Pizza em Jundiaí pelo WhatsApp, Site ou App." />
+  <meta name="theme-color" content="#FFF700" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="#PedeJet | Jet Pizzas Jundiaí" />
+  <meta property="og:description" content="A PIZZA DE OUTRO MUNDO! Peça sua Jet Pizza em Jundiaí." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/hero-poster.jpg" />
+
+  <link rel="icon" type="image/jpeg" href="assets/app-iphone.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="tracking-config.js"></script>
+  <script src="tracking.js"></script>
+</head>
+<body>
+  <div class="page-backdrop">
+    <main class="profile-frame" aria-label="Jet Pizzas Jundiaí">
+      <!-- Top Floating Action Bar -->
+      <div class="top-bar">
+        <button
+          type="button"
+          class="top-bar-btn"
+          id="share-page-btn"
+          aria-label="Compartilhar página"
+          title="Compartilhar página"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+            <polyline points="16 6 12 2 8 6" />
+            <line x1="12" y1="2" x2="12" y2="15" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Hero Video / Avatar -->
+      <header class="profile-header">
+        <div class="hero-media">
+          <video
+            class="hero-video"
+            autoplay
+            loop
+            muted
+            playsinline
+            poster="assets/hero-poster.jpg"
+            aria-label="Animação Jet Pizzas"
+          >
+            <source src="assets/hero.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div class="profile-identity">
+          <h1 class="profile-title">#PedeJet</h1>
+          <h2 class="profile-subtitle">A PIZZA DE OUTRO MUNDO!</h2>
+          <p class="location-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Unidade Jundiaí - SP
+          </p>
+        </div>
+      </header>
+
+      <!-- Main Links Stack -->
+      <section class="links-container" aria-label="Links principais">
+        <!-- 1. Destaque: Pedir pelo WhatsApp (Jundiaí: +55 11 96182-9238) -->
+        <div class="link-item">
+          <a
+            class="link-card link-card--primary"
+            href="https://wa.me/5511961829238?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20na%20Jet%20Pizzas%20Jundia%C3%AD%20%F0%9F%8D%95"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track-event="ClickWhatsApp"
+          >
+            <span class="link-media link-media--icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+              </svg>
+            </span>
+            <span class="link-text">
+              <span class="link-title">PEDIR PELO WHATSAPP</span>
+              <span class="link-subtitle">Atendimento rápido · Jundiaí</span>
+            </span>
+          </a>
+          <button
+            type="button"
+            class="link-share-btn link-share-btn--on-dark"
+            data-share-url="https://wa.me/5511961829238?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20na%20Jet%20Pizzas%20Jundia%C3%AD%20%F0%9F%8D%95"
+            data-share-title="PEDIR PELO WHATSAPP | Jet Pizzas Jundiaí"
+            aria-label="Compartilhar link PEDIR PELO WHATSAPP"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <circle cx="12" cy="5" r="1.75" />
+              <circle cx="12" cy="12" r="1.75" />
+              <circle cx="12" cy="19" r="1.75" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- 2. Cardápio e Pedir pelo Site -->
+        <div class="link-item">
+          <a
+            class="link-card"
+            href="https://pedidos.jetpizzas.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track-event="ClickCardapioSite"
+          >
+            <span class="link-media link-media--icon">
+              <img src="assets/world-pin.svg" alt="" width="32" height="32" />
+            </span>
+            <span class="link-text">
+              <span class="link-title">VER CARDÁPIO E PEDIR PELO SITE</span>
+            </span>
+          </a>
+          <button
+            type="button"
+            class="link-share-btn"
+            data-share-url="https://pedidos.jetpizzas.com.br"
+            data-share-title="VER CARDÁPIO E PEDIR PELO SITE | Jet Pizzas"
+            aria-label="Compartilhar link VER CARDÁPIO E PEDIR PELO SITE"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <circle cx="12" cy="5" r="1.75" />
+              <circle cx="12" cy="12" r="1.75" />
+              <circle cx="12" cy="19" r="1.75" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- 3. App iPhone -->
+        <div class="link-item">
+          <a
+            class="link-card"
+            href="https://apps.apple.com/br/app/jet-pizzas/id1092715174"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track-event="ClickAppiOS"
+          >
+            <span class="link-media link-media--thumb">
+              <img src="assets/app-iphone.jpg" alt="" loading="eager" />
+            </span>
+            <span class="link-text">
+              <span class="link-title">BAIXAR O APP - iPhone</span>
+              <span class="link-subtitle">
+                <svg class="inline-badge-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 4L4.5 17.5" />
+                  <path d="M12 4l7.5 13.5" />
+                  <path d="M3 15.5h18" />
+                </svg>
+                App Store
+              </span>
+            </span>
+          </a>
+          <button
+            type="button"
+            class="link-share-btn"
+            data-share-url="https://apps.apple.com/br/app/jet-pizzas/id1092715174"
+            data-share-title="BAIXAR O APP - iPhone | Jet Pizzas"
+            aria-label="Compartilhar link BAIXAR O APP - iPhone"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <circle cx="12" cy="5" r="1.75" />
+              <circle cx="12" cy="12" r="1.75" />
+              <circle cx="12" cy="19" r="1.75" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- 4. App Android -->
+        <div class="link-item">
+          <a
+            class="link-card"
+            href="https://play.google.com/store/apps/details?id=br.com.delivery.jetpizzasolga&pli=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track-event="ClickAppAndroid"
+          >
+            <span class="link-media link-media--thumb">
+              <img src="assets/app-android.png" alt="" loading="eager" />
+            </span>
+            <span class="link-text">
+              <span class="link-title">BAIXAR O APP - Android</span>
+              <span class="link-subtitle">
+                <svg class="inline-badge-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M5.2 3.2a1 1 0 0 1 1.05.05l13.4 8a1 1 0 0 1 0 1.72l-13.4 8A1 1 0 0 1 4.75 20V4a1 1 0 0 1 .45-.8z" />
+                </svg>
+                Google Play
+              </span>
+            </span>
+          </a>
+          <button
+            type="button"
+            class="link-share-btn"
+            data-share-url="https://play.google.com/store/apps/details?id=br.com.delivery.jetpizzasolga&pli=1"
+            data-share-title="BAIXAR O APP - Android | Jet Pizzas"
+            aria-label="Compartilhar link BAIXAR O APP - Android"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <circle cx="12" cy="5" r="1.75" />
+              <circle cx="12" cy="12" r="1.75" />
+              <circle cx="12" cy="19" r="1.75" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Seção Exclusiva: LOJA JUNDIAÍ -->
+        <h3 class="section-heading">LOJA JUNDIAÍ</h3>
+
+        <div class="link-item">
+          <a
+            class="link-card"
+            href="tel:+551145227219"
+            data-track-event="ClickTelefoneJundiai"
+          >
+            <span class="link-media link-media--icon">
+              <img src="assets/phone-call.svg" alt="" width="32" height="32" />
+            </span>
+            <span class="link-text">
+              <span class="link-title">☎️ 11 4522.7219</span>
+              <span class="link-subtitle">
+                <svg class="inline-badge-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M5 20a7 7 0 0 1 14 0" />
+                </svg>
+                Contato · Jet Pizzas Jundiaí
+              </span>
+            </span>
+          </a>
+          <button
+            type="button"
+            class="link-share-btn"
+            data-share-url="tel:+551145227219"
+            data-share-text="Jet Pizzas Jundiaí - Telefone: (11) 4522-7219"
+            data-share-title="Contato · Jet Pizzas Jundiaí"
+            aria-label="Copiar telefone da Loja Jundiaí"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <circle cx="12" cy="5" r="1.75" />
+              <circle cx="12" cy="12" r="1.75" />
+              <circle cx="12" cy="19" r="1.75" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- Bottom Social Icons -->
+      <nav class="social-row" aria-label="Redes sociais e aplicativos">
+        <a
+          class="social-link"
+          href="https://www.instagram.com/jetpizzas/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          title="Instagram"
+          data-track-event="ClickInstagram"
+          data-track-position="footer"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="4.2" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
+        </a>
+
+        <a
+          class="social-link"
+          href="https://wa.me/5511961829238?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20na%20Jet%20Pizzas%20Jundia%C3%AD%20%F0%9F%8D%95"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp Jundiaí"
+          title="WhatsApp Jundiaí (+55 11 96182-9238)"
+          data-track-event="ClickWhatsApp"
+          data-track-position="footer"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+            <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+          </svg>
+        </a>
+
+        <a
+          class="social-link"
+          href="https://apps.apple.com/br/app/jet-pizzas/id1092715174"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Apple App Store"
+          title="Apple App Store"
+          data-track-event="ClickAppiOS"
+          data-track-position="footer"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.96 6.33c.68-.83 1.14-1.97 1.01-3.13-.98.04-2.17.65-2.87 1.48-.63.72-1.18 1.89-1.03 3.01 1.1.08 2.21-.53 2.89-1.36z" />
+          </svg>
+        </a>
+
+        <a
+          class="social-link"
+          href="https://play.google.com/store/apps/details?id=br.com.delivery.jetpizzasolga&pli=1"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Google Play Store"
+          title="Google Play Store"
+          data-track-event="ClickAppAndroid"
+          data-track-position="footer"
+        >
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3.609 1.814L13.792 12 3.61 22.186a1.99 1.99 0 0 1-.61-1.436V3.25c0-.56.23-.1.609-1.436zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
+          </svg>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <!-- Toast feedback for copy/share -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

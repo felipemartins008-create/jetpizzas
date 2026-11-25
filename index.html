@@ -5,96 +5,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>#PedeJet | Jet Pizzas Jundiaí</title>
   <meta name="description" content="A PIZZA DE OUTRO MUNDO! Peça sua Jet Pizza em Jundiaí pelo WhatsApp, Site ou App." />
-  <meta name="theme-color" content="#FFF700" />
+  <meta name="theme-color" content="#0A0A0C" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="#PedeJet | Jet Pizzas Jundiaí" />
   <meta property="og:description" content="A PIZZA DE OUTRO MUNDO! Peça sua Jet Pizza em Jundiaí." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/hero-poster.jpg" />
+  <meta property="og:image" content="assets/pizzas-poster.jpg" />
 
   <link rel="icon" type="image/jpeg" href="assets/app-iphone.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="v2.css" />
   <script src="tracking-config.js"></script>
   <script src="tracking.js"></script>
 </head>
 <body>
-  <div class="page-backdrop">
-    <main class="profile-frame" aria-label="Jet Pizzas Jundiaí">
-      <!-- Top Floating Action Bar -->
-      <div class="top-bar">
-        <button
-          type="button"
-          class="top-bar-btn"
-          id="share-page-btn"
-          aria-label="Compartilhar página"
-          title="Compartilhar página"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
-            <polyline points="16 6 12 2 8 6" />
-            <line x1="12" y1="2" x2="12" y2="15" />
+  <!-- Full-Bleed Background Video (Mobile vs Desktop) -->
+  <div class="video-bg-wrapper" aria-hidden="true">
+    <video
+      id="bg-video"
+      class="video-bg"
+      autoplay
+      loop
+      muted
+      playsinline
+      preload="auto"
+      data-src-mobile="assets/pizzas-mobile.mp4"
+      data-poster-mobile="assets/pizzas-mobile-poster.jpg"
+      data-src-desktop="assets/pizzas.mp4"
+      data-poster-desktop="assets/pizzas-poster.jpg"
+    ></video>
+    <div class="video-scrim"></div>
+  </div>
+  <script>
+    (() => {
+      const video = document.getElementById('bg-video');
+      if (!video) return;
+      const mq = window.matchMedia('(max-width: 767px)');
+      function applySource(isMobile) {
+        const nextSrc = isMobile ? video.dataset.srcMobile : video.dataset.srcDesktop;
+        const nextPoster = isMobile ? video.dataset.posterMobile : video.dataset.posterDesktop;
+        if (video.getAttribute('src') === nextSrc) return;
+        video.setAttribute('poster', nextPoster);
+        video.setAttribute('src', nextSrc);
+        video.load();
+        video.play().catch(() => {});
+      }
+      applySource(mq.matches);
+      mq.addEventListener('change', (e) => applySource(e.matches));
+    })();
+  </script>
+
+  <!-- Top Floating Share Button -->
+  <div class="top-bar">
+    <button
+      type="button"
+      class="top-bar-btn"
+      id="share-page-btn"
+      aria-label="Compartilhar página"
+      title="Compartilhar página"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+        <polyline points="16 6 12 2 8 6" />
+        <line x1="12" y1="2" x2="12" y2="15" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Centered Content Over Video -->
+  <main class="stage" aria-label="Jet Pizzas Jundiaí">
+    <div class="content-column">
+      <!-- Header / Identity -->
+      <header class="hero-header">
+        <p class="location-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
           </svg>
-        </button>
-      </div>
+          Unidade Jundiaí - SP
+        </p>
 
-      <!-- Hero Video / Avatar -->
-      <header class="profile-header">
-        <div class="hero-media">
-          <video
-            class="hero-video"
-            autoplay
-            loop
-            muted
-            playsinline
-            poster="assets/hero-poster.jpg"
-            aria-label="Animação Jet Pizzas"
-          >
-            <source src="assets/hero.mp4" type="video/mp4" />
-          </video>
+        <div class="brand-avatar">
+          <img src="assets/app-iphone.jpg" alt="Logo Jet Pizzas" />
         </div>
 
-        <div class="profile-identity">
-          <h1 class="profile-title">#PedeJet</h1>
-          <h2 class="profile-subtitle">A PIZZA DE OUTRO MUNDO!</h2>
-          <p class="location-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            Unidade Jundiaí - SP
-          </p>
-        </div>
+        <h1 class="brand-title">#PedeJet</h1>
+        <h2 class="brand-subtitle">A PIZZA DE OUTRO MUNDO!</h2>
       </header>
 
-      <!-- Main Links Stack -->
-      <section class="links-container" aria-label="Links principais">
-        <!-- 1. Destaque: Pedir pelo WhatsApp (Jundiaí: +55 11 96182-9238) -->
+      <!-- Action Buttons -->
+      <section class="links-stack" aria-label="Links principais">
+        <!-- 1. Destaque Principal: WhatsApp Jundiaí -->
         <div class="link-item">
           <a
-            class="link-card link-card--primary"
+            class="btn-card btn-card--primary"
             href="https://wa.me/5511961829238?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20na%20Jet%20Pizzas%20Jundia%C3%AD%20%F0%9F%8D%95"
             target="_blank"
             rel="noopener noreferrer"
             data-track-event="ClickWhatsApp"
           >
-            <span class="link-media link-media--icon">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <span class="btn-media btn-media--icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
                 <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
               </svg>
             </span>
-            <span class="link-text">
-              <span class="link-title">PEDIR PELO WHATSAPP</span>
-              <span class="link-subtitle">Atendimento rápido · Jundiaí</span>
+            <span class="btn-text">
+              <span class="btn-title">PEDIR PELO WHATSAPP</span>
+              <span class="btn-subtitle">Atendimento rápido · Jundiaí</span>
             </span>
           </a>
           <button
             type="button"
-            class="link-share-btn link-share-btn--on-dark"
+            class="link-share-btn link-share-btn--on-yellow"
             data-share-url="https://wa.me/5511961829238?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20na%20Jet%20Pizzas%20Jundia%C3%AD%20%F0%9F%8D%95"
             data-share-title="PEDIR PELO WHATSAPP | Jet Pizzas Jundiaí"
             aria-label="Compartilhar link PEDIR PELO WHATSAPP"
@@ -110,17 +136,25 @@
         <!-- 2. Cardápio e Pedir pelo Site -->
         <div class="link-item">
           <a
-            class="link-card"
+            class="btn-card btn-card--glass"
             href="https://pedidos.jetpizzas.com.br"
             target="_blank"
             rel="noopener noreferrer"
             data-track-event="ClickCardapioSite"
           >
-            <span class="link-media link-media--icon">
-              <img src="assets/world-pin.svg" alt="" width="32" height="32" />
+            <span class="btn-media btn-media--icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20.972 11.291a9 9 0 1 0 -8.322 9.686" />
+                <path d="M3.6 9h16.8" />
+                <path d="M3.6 15h8.9" />
+                <path d="M11.5 3a17 17 0 0 0 0 18" />
+                <path d="M12.5 3a16.986 16.986 0 0 1 2.578 9.018" />
+                <path d="M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879z" />
+                <path d="M19 18v.01" />
+              </svg>
             </span>
-            <span class="link-text">
-              <span class="link-title">VER CARDÁPIO E PEDIR PELO SITE</span>
+            <span class="btn-text">
+              <span class="btn-title">VER CARDÁPIO E PEDIR PELO SITE</span>
             </span>
           </a>
           <button
@@ -141,18 +175,18 @@
         <!-- 3. App iPhone -->
         <div class="link-item">
           <a
-            class="link-card"
+            class="btn-card btn-card--glass"
             href="https://apps.apple.com/br/app/jet-pizzas/id1092715174"
             target="_blank"
             rel="noopener noreferrer"
             data-track-event="ClickAppiOS"
           >
-            <span class="link-media link-media--thumb">
+            <span class="btn-media btn-media--thumb">
               <img src="assets/app-iphone.jpg" alt="" loading="eager" />
             </span>
-            <span class="link-text">
-              <span class="link-title">BAIXAR O APP - iPhone</span>
-              <span class="link-subtitle">
+            <span class="btn-text">
+              <span class="btn-title">BAIXAR O APP - iPhone</span>
+              <span class="btn-subtitle">
                 <svg class="inline-badge-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M12 4L4.5 17.5" />
                   <path d="M12 4l7.5 13.5" />
@@ -180,18 +214,18 @@
         <!-- 4. App Android -->
         <div class="link-item">
           <a
-            class="link-card"
+            class="btn-card btn-card--glass"
             href="https://play.google.com/store/apps/details?id=br.com.delivery.jetpizzasolga&pli=1"
             target="_blank"
             rel="noopener noreferrer"
             data-track-event="ClickAppAndroid"
           >
-            <span class="link-media link-media--thumb">
+            <span class="btn-media btn-media--thumb">
               <img src="assets/app-android.png" alt="" loading="eager" />
             </span>
-            <span class="link-text">
-              <span class="link-title">BAIXAR O APP - Android</span>
-              <span class="link-subtitle">
+            <span class="btn-text">
+              <span class="btn-title">BAIXAR O APP - Android</span>
+              <span class="btn-subtitle">
                 <svg class="inline-badge-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M5.2 3.2a1 1 0 0 1 1.05.05l13.4 8a1 1 0 0 1 0 1.72l-13.4 8A1 1 0 0 1 4.75 20V4a1 1 0 0 1 .45-.8z" />
                 </svg>
@@ -214,27 +248,28 @@
           </button>
         </div>
 
-        <!-- Seção Exclusiva: LOJA JUNDIAÍ -->
-        <h3 class="section-heading">LOJA JUNDIAÍ</h3>
+        <!-- Divisor LOJA JUNDIAÍ -->
+        <div class="section-divider" role="heading" aria-level="3">
+          <span>LOJA JUNDIAÍ</span>
+        </div>
 
+        <!-- 5. Telefone Loja Jundiaí -->
         <div class="link-item">
           <a
-            class="link-card"
+            class="btn-card btn-card--glass"
             href="tel:+551145227219"
             data-track-event="ClickTelefoneJundiai"
           >
-            <span class="link-media link-media--icon">
-              <img src="assets/phone-call.svg" alt="" width="32" height="32" />
+            <span class="btn-media btn-media--icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                <path d="M15 7a2 2 0 0 1 2 2" />
+                <path d="M15 3a6 6 0 0 1 6 6" />
+              </svg>
             </span>
-            <span class="link-text">
-              <span class="link-title">☎️ 11 4522.7219</span>
-              <span class="link-subtitle">
-                <svg class="inline-badge-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="8" r="4" />
-                  <path d="M5 20a7 7 0 0 1 14 0" />
-                </svg>
-                Contato · Jet Pizzas Jundiaí
-              </span>
+            <span class="btn-text">
+              <span class="btn-title">☎️ 11 4522.7219</span>
+              <span class="btn-subtitle">Contato · Jet Pizzas Jundiaí</span>
             </span>
           </a>
           <button
@@ -266,7 +301,7 @@
           data-track-event="ClickInstagram"
           data-track-position="footer"
         >
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5" />
             <circle cx="12" cy="12" r="4.2" />
             <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
@@ -283,7 +318,7 @@
           data-track-event="ClickWhatsApp"
           data-track-position="footer"
         >
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
             <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
           </svg>
@@ -299,7 +334,7 @@
           data-track-event="ClickAppiOS"
           data-track-position="footer"
         >
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.96 6.33c.68-.83 1.14-1.97 1.01-3.13-.98.04-2.17.65-2.87 1.48-.63.72-1.18 1.89-1.03 3.01 1.1.08 2.21-.53 2.89-1.36z" />
           </svg>
         </a>
@@ -314,15 +349,15 @@
           data-track-event="ClickAppAndroid"
           data-track-position="footer"
         >
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M3.609 1.814L13.792 12 3.61 22.186a1.99 1.99 0 0 1-.61-1.436V3.25c0-.56.23-.1.609-1.436zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
           </svg>
         </a>
       </nav>
-    </main>
-  </div>
+    </div>
+  </main>
 
-  <!-- Toast feedback for copy/share -->
+  <!-- Toast feedback -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="script.js"></script>
